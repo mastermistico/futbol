@@ -54,7 +54,7 @@ client.stream('statuses/filter', { track: ['hala madrid','visca barza','halamadr
           });
         }
       }
-      if (text.indexOf('fcbarcelona') != -1 ) || (text.indexOf('visca barza') != -1)) {
+      if ((text.indexOf('fcbarcelona') != -1 ) || (text.indexOf('visca barza') != -1)) {
         barcelona++
         total++
         if ((barcelona % 5) == 0){
