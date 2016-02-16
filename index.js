@@ -1,4 +1,4 @@
-var port = process.env.PORT || 5000;
+var port = process.env.PORT || 3000;
 var express  = require('express');
 var app = express();
 var Twitter = require('twitter');
@@ -6,7 +6,7 @@ var madrid = 0,
     barcelona = 0,
     total = 0;
 
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 3000));
 //app.use(express.static(__dirname + '/public'));
 /*var server = app.listen(5000, function () {
 
@@ -32,19 +32,21 @@ var client = new Twitter({
   access_token_secret: 'RSskwDX6qGfdltOzU1bAhNb8NcSc6ZLYGmR3yhAEPvzuB'
 });
 
-client.stream('statuses/filter', { track: ['madrid', 'barcelona'] }, function(stream) {
-  console.log(stream);
+client.stream('statuses/filter', { track: ['hala madrid','visca barza','halamadrid','fcbarcelona'] }, function(stream) {
+  
     stream.on('error', function(error) {
-    console.log(error,'gggg');
+    
   });
   stream.on('data', function (tweet) {
-    console.log(tweet,'gggg');
+    
     if (tweet.text) { 
       var text = tweet.text.toLowerCase();
-      if (text.indexOf('madrid') != -1) {
+      if ((text.indexOf('hala madrid') != -1) || (text.indexOf('halamadrid') != -1)) {
         madrid++
         total++
-        if ((madrid % 75) == 0){
+
+        if ((madrid % 5) == 0){
+          
           io.sockets.emit('madridr', { 
             user: tweet.user.screen_name, 
             text: tweet.text,
@@ -52,10 +54,10 @@ client.stream('statuses/filter', { track: ['madrid', 'barcelona'] }, function(st
           });
         }
       }
-      if (text.indexOf('barcelona') != -1) {
+      if (text.indexOf('fcbarcelona') != -1 ) || (text.indexOf('visca barza') != -1)) {
         barcelona++
         total++
-        if ((barcelona % 25) == 0){
+        if ((barcelona % 5) == 0){
           io.sockets.emit('barcelonar', { 
             user: tweet.user.screen_name, 
             text: tweet.text,
@@ -75,7 +77,7 @@ client.stream('statuses/filter', { track: ['madrid', 'barcelona'] }, function(st
 app.get('/', function(request, response) {
   //response.send('Hello World!');
   response.sendFile(__dirname + '/index.html');
-  console.log('hhhh')
+  
 });
 
 
