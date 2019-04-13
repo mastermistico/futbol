@@ -26,10 +26,10 @@ var server = app.listen(app.get('port'), function() {
 var io = require('socket.io').listen(server);
 
 var client = new Twitter({
-  consumer_key: 'c1UTOoezFJbsmTq7oaAYoRWVX',
-  consumer_secret: 'S3SRxfheHoBFsgeeIT3WzHEkMBETHi0DVLc2yt1sKZOK8MsCDi',
-  access_token_key: '283759002-zI4ZiCeDGe7z3W1pTlJToHtssV50PHOGvAAbMI0Q',
-  access_token_secret: 'FssCH9XS6IwSR3KrU1X5hXofv2kP8ILM8qNUqo5ZikOnX'
+  consumer_key: 'sbSIBiri8iELonsmnzXFr0Aie',
+  consumer_secret: 'DaAs48G2C9eUod2SO4Na24PfkR3CobXYCHtUeOalei8pBoF1Bq',
+  access_token_key: '2239995774-JzB7K3u4OBFigZSaQjsFOVGXWUilpXQ5R32S11w',
+  access_token_secret: 'Lrs6nHZZauceRLdge3fCxrxq0DjpEYZexjQe3HeZi38Af'
 });
 
 client.stream('statuses/filter', { track: ['hala madrid','visca barza','halamadrid','fcbarcelona'] }, function(stream) {
