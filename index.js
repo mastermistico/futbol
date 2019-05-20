@@ -45,25 +45,25 @@ client.stream('statuses/filter', { track: ['hala madrid','visca barza','halamadr
         madrid++
         total++
 
-        //if ((madrid % 5) == 0){
+        if ((madrid % 5) == 0){
           
           io.sockets.emit('madridr', { 
             user: tweet.user.screen_name, 
             text: tweet.text,
             avatar: tweet.user.profile_image_url_https
           });
-        //}
+        }
       }
       if ((text.indexOf('fcbarcelona') != -1 ) || (text.indexOf('visca barza') != -1)) {
         barcelona++
         total++
-        //if ((barcelona % 5) == 0){
+        if ((barcelona % 5) == 0){
           io.sockets.emit('barcelonar', { 
             user: tweet.user.screen_name, 
             text: tweet.text,
             avatar: tweet.user.profile_image_url_https
           });
-        //}
+        }
       }
       io.sockets.emit('percentages', { 
         madrid: (madrid/total)*100,
